@@ -1,0 +1,29 @@
+{% extends "mainlib//base.html" %}
+{% load static %}
+{% block content %}
+<div class="row container-fluid abc">
+  <div class="container-fluid">
+    <h1> Recent </h1>
+    {% if item == 0 %}
+
+    <h2> No recent Activity Yet </h2>
+    <h3> View and Add Books from categories and your recently view appear here </h3>
+    
+  </div>
+    {% else %}
+
+      {% for key, value in item.items %}
+
+        <div class="container-fluid" style="padding: 1.5em;">
+          <h1>  {{ key }}  </h1>
+          {% for bk in value %}
+            <h5 >  {{ bk.book.book_title }}  </h5>
+            <a style="border: 2em; padding-bottom: 2em;" href="{% url 'per_book' bk.book.id %}" >  <img class="d-inline-block align-top img-fluid" src="{{ bk.book.book_img_url }}" width="180"/> </a>
+          {% endfor %}
+        </div>
+      {% endfor %}
+    {% endif %}
+
+</div>
+</div>
+{% endblock content %}

@@ -1,0 +1,23 @@
+{% extends "mainlib//base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="row container-fluid abc">
+    <h1> {{ category }}</h1>
+    {% for book in context_text %}
+      <article class="container-fluid" style="border: 2em; padding-bottom: 2em;">
+      <div class="article-metadata">
+          <h2> <a class="mr-2 article-title" href="{% url 'per_book' book.id %}">{{ book.book_title }}</a> </h2>
+          <a href="{% url 'per_book' book.id %}">  <img class="d-inline-block align-top img-fluid" src="{{ book.book_img_url }}" width="180"/> </a>
+          <a class="mr-2 text-muted">{{ book.book_author }}</a>
+          <small class="text-muted">{{ book.book_pubd }}</small>
+      </div>
+      </article>
+
+    {% endfor %}
+
+
+</div>
+
+
+{% endblock content %}

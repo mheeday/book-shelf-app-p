@@ -1,0 +1,19 @@
+{% extends "mainlib/base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="row container-fluid">
+
+  <h1  class="col-md-12 container-fluid" > Welcome to Reader's Coven </h1>
+  
+  {% for key, value in context_home.items %}
+
+  <div class="col-md-6 container-fluid" style="border: 2em; padding-bottom: 2em">
+    <h3> {{ key }} </h3>
+    <a href="{% url 'per_book' value.id %}">  <img class="d-inline-block align-top img-fluid" src="{{ value.book_img_url }}" width="180"/> </a>
+  </div>
+
+  {% endfor %}
+</div>
+
+{% endblock content %}
